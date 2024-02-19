@@ -41,15 +41,24 @@ def f1(x):
 
 
 def printNumbers(x, y, z):
-
-    if (x == z):
-        pass
-    elif (x == y):
-        print(y)
-        return
+    if(x >= y):
+        if (x == z):
+            pass
+        elif (x == y):
+            print(y)
+            return
+        else:
+            print(x)
+        printNumbers(x  -1, y, z)
     else:
-        print(x)
-    printNumbers(x + 1, y, z)
+        if (x == z):
+            pass
+        elif (x == y):
+            print(y)
+            return
+        else:
+            print(x)
+        printNumbers(x + 1, y, z)
 
 
 def listProduct(list1, list2):
