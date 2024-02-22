@@ -142,6 +142,7 @@ if __name__ == '__main__':
     x = int(input())
     y = int(input())
     z = int(input())
+    print()
     (printNumbers(x,y,z))
     x = int(input(("please enter a size for the lists for the ListProduct function:")))
     print("please enter 2 list")
