@@ -1,5 +1,11 @@
 
 def factorSum(x):
+    """
+        Calculates the sum of prime factors of a given integer.
+
+        :param x: Integer to find the sum of prime factors for.
+        :return: Sum of prime factors.
+        """
     w = 0
     factorArr = []
     while x > 1:
@@ -15,7 +21,13 @@ def factorSum(x):
     return sum(factorArr)
 
 def interceptPoint(tuple1, tuple2):
+    """
+        Calculates the intersection point of two lines.
 
+        :param tuple1: Tuple representing the first line (a1, b1).
+        :param tuple2: Tuple representing the second line (a2, b2).
+        :return: Intersection point (x, y) or None if lines are parallel.
+        """
 
     a1, b1 = tuple1
     a2, b2 = tuple2
@@ -30,6 +42,12 @@ def interceptPoint(tuple1, tuple2):
 
 
 def onlyPositive(f1):
+    """
+        Decorator function to ensure the input to a function is always positive.
+
+        :param f1: Function to decorate.
+        :return: Decorated function.
+        """
     def inner(x):
         if x < 0:
             x *= -1
@@ -37,10 +55,23 @@ def onlyPositive(f1):
 
     return inner
 def f1(x):
+    """
+        Simple function that returns x + 1.
+
+        :param x: Input value.
+        :return: x + 1.
+        """
     return x + 1
 
 
 def printNumbers(x, y, z):
+    """
+       Prints numbers from x to y (excluding z).
+
+       :param x: Starting number.
+       :param y: Ending number.
+       :param z: Number to exclude.
+       """
     if(x >= y):
         if (x == z):
             pass
@@ -62,6 +93,13 @@ def printNumbers(x, y, z):
 
 
 def listProduct(list1, list2):
+    """
+        Combines two lists based on element counts.
+
+        :param list1: List of elements.
+        :param list2: List of counts corresponding to elements in list1.
+        :return: Combined list based on counts.
+        """
     list3 = []
     for i in range(len(list1)):
         count = list2[i]
@@ -71,6 +109,12 @@ def listProduct(list1, list2):
 
 
 def analyze(str):
+    """
+        Analyzes a string of comma-separated numerical values and counts those greater than or equal to 85.
+
+        :param str: String of comma-separated numerical values.
+        :return: Count of numbers greater than or equal to 85.
+        """
     count = 0
 
     num = str.split(',')
