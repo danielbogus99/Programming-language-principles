@@ -14,13 +14,13 @@ class Course:
         Set the grade for the course, ensuring it falls within a valid range (0-100).
 
         Args:
-        Sgrade (int): The grade to be set for the course.
+        Sgrade (float): The grade to be set for the course.
         """
-        Sgrade = int(Sgrade)
+        Sgrade = float(Sgrade)
         if Sgrade > 100 or Sgrade < 0:
             print("grade is not valid must be between 0-100\n")
             return
-        self.grade = int(Sgrade)
+        self.grade = float(Sgrade)
 
     def getGrades(self):
         """
@@ -111,8 +111,7 @@ class Student:
         Returns:
         int: The grade of the specified course, or -1 if the course is not found.
         """
-        CourseGrade = list(
-            filter(lambda x: x.getGrades if x.course_name == CourseName else False, self.student_Courses))
+        CourseGrade = list(filter(lambda x: x.getGrades if x.course_name == CourseName else False, self.student_Courses))
         if not CourseGrade:
             return -1
         return CourseGrade[0].getGrades()
@@ -171,7 +170,7 @@ def inputFromFile(filename):
                         student = Student(S_name, S_id)
                 if counter == 2:
                     if char == "#" or char == ";" or i + 1 == len(line):
-                        if counter2 == 0:
+                        if counter2 == 0 and char == "#":
                             word = word[:-1]
                             Course_Name = word
                             if not Course_Name:
@@ -179,7 +178,7 @@ def inputFromFile(filename):
                                 return False
                             counter2 += 1
                             word = ""
-                        elif counter2 == 1:
+                        elif counter2 == 1 :
                             if i + 1 != len(line):
                                 word = word[:-1]
                             Course_grade = word
@@ -213,7 +212,7 @@ def studentAvr(S_list, name):
         print(f"student {name} was not found\n")
         return
     names = list(filter(lambda x: x if x.getStudentName() == name else False, S_list))
-    print(names)
+    print(names[0].getStudentName())
     names[0].AvrOfCourses()
 
 
@@ -278,9 +277,16 @@ def MainMenu(S_list):
 
 
 if __name__ == '__main__':
-    file = input("please enter file name:\n")
-    student_list = inputFromFile(file)
-    if student_list:
-        print("student added to the student list successfully")
-    MainMenu(student_list)
+    flag = True
+    try:
+        file = input("please enter file name:\n")
+        student_list = inputFromFile(file)
+    except:
+        flag = False
+    if(flag == False):
+        print("FILE PATH IS NOT VALID\n")
+    else:
+        if student_list:
+            print("student added to the student list successfully")
+        MainMenu(student_list)
 
