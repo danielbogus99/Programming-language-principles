@@ -1,5 +1,4 @@
-Israel Israeli	123456789	Intro to computer#89;OOP#100;OOP#98;ML#100
-bob Israeli	123456789	Intro to computer#50;ML#50
-Israel Israeli	123456789	Intro to computer#89;OOP#100;OOP#98;ML#100
-Israel Israeli	123456789	Intro to computer#89;OOP#100;OOP#98;ML#100
-Israel Israeli	123456789	Intro to computer#89;OOP#100;OOP#98;ML#100
+israel sdsd	123456789	Intro to computer#89;OOP#75;OOP#98;ML#100
+Israel Israeli	125456789	Intro to computer#89;OOP#18;OOP#96;ML#10
+israel sdsd	123456789	Intro to computer#89;OOP#75;OOP#98;ML#100
+israel sdsd	123456789	Intro to computer#89;OOP#75;OOP#98;ML#100
