@@ -99,7 +99,7 @@ class Student:
         Calculate and print the average grade of all courses taken by the student.
         """
         sums = list(map(lambda x: x.getGrades(), self.student_Courses))
-        print(f"student id is: {self.__student_id} and the average is {float(sum((sums)) / float(len(sums)))}")
+        return (f"student id is: {self.__student_id} and the average is {float(sum(sums) / float(len(sums)))}")
 
     def getCourseGrade(self, CourseName):
         """
@@ -111,7 +111,8 @@ class Student:
         Returns:
         int: The grade of the specified course, or -1 if the course is not found.
         """
-        CourseGrade = list(filter(lambda x: x.getGrades if x.course_name == CourseName else False, self.student_Courses))
+        CourseGrade = list(
+            filter(lambda x: x.getGrades if x.course_name == CourseName else False, self.student_Courses))
         if not CourseGrade:
             return -1
         return CourseGrade[0].getGrades()
@@ -124,7 +125,7 @@ class Student:
         str: A string containing the student's ID and their average grade.
         """
         sums = list(map(lambda x: x.getGrades(), self.student_Courses))
-        return f"{self.__student_id}  {float(sum((sums)) / float(len(sums)))}"
+        return f"{self.__student_id}  {float(sum(sums) / float(len(sums)))}"
 
 
 def inputFromFile(filename):
@@ -170,7 +171,7 @@ def inputFromFile(filename):
                         student = Student(S_name, S_id)
                 if counter == 2:
                     if char == "#" or char == ";" or i + 1 == len(line):
-                        if counter2 == 0 and char == "#":
+                        if counter2 == 0 :
                             word = word[:-1]
                             Course_Name = word
                             if not Course_Name:
@@ -206,14 +207,15 @@ def studentAvr(S_list, name):
     name (str): The name of the student.
     """
     names = list(map(lambda student_name: student_name.getStudentName(), S_list))
-    StudentName = list(filter(lambda student_name: student_name == name, names))
-    print(StudentName)
+    StudentName = list(filter(lambda student_name: student_name.getStudentName() == name, S_list))
+
     if len(StudentName) <= 0:
         print(f"student {name} was not found\n")
         return
     names = list(filter(lambda x: x if x.getStudentName() == name else False, S_list))
     print(names[0].getStudentName())
-    names[0].AvrOfCourses()
+    N=list(map(lambda x :x.AvrOfCourses(),names))
+    print(N)
 
 
 def CourseAvr(S_list, c_name):
@@ -243,6 +245,7 @@ def AverageOfStudents(S_list, filename):
         listOfStudentAvr = list(map(lambda x: str(x.AvrOfAllstudents()), S_list))
         line = map(lambda x: x + '\n', listOfStudentAvr)
         file.writelines(line)
+    file.close()
 
 
 def MainMenu(S_list):
@@ -277,16 +280,17 @@ def MainMenu(S_list):
 
 
 if __name__ == '__main__':
+    student_list = []
     flag = True
     try:
         file = input("please enter file name:\n")
         student_list = inputFromFile(file)
     except:
         flag = False
-    if(flag == False):
+    if not flag:
         print("FILE PATH IS NOT VALID\n")
-    else:
-        if student_list:
-            print("student added to the student list successfully")
+    elif len(student_list) == 0:
+        print("list of students is empty\n")
+    elif flag == True:
+        print("student added to the student list successfully")
         MainMenu(student_list)
-
